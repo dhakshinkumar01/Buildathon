@@ -1,0 +1,234 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-main: #ffffff;
+    --bg-card: #ffffff;
+    --bg-secondary: #f7f7f8;
+    --text-primary: #000000;
+    --text-secondary: #111111;
+    --text-muted: #666666;
+    --border-light: rgba(0, 0, 0, 0.08);
+    --border-strong: rgba(0, 0, 0, 0.2);
+    --accent-yellow: #ffd000;
+    --accent-coral: #ff3b30;
+    --silver-accent: #e2e2e8;
+  }
+
+  /* The header offset is applied per section via `scroll-mt-24`.
+     Do not add scroll-padding-top here: both would apply and double the offset. */
+  html {
+    scroll-behavior: smooth;
+    /* Keeps the page from shifting sideways when a popup locks scrolling */
+    scrollbar-gutter: stable;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-heading {
+    font-family: 'Plus Jakarta Sans', 'Space Grotesk', sans-serif;
+    letter-spacing: -0.03em;
+  }
+
+  .font-grotesk {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .font-archivo {
+    font-family: 'Archivo', sans-serif;
+  }
+}
+
+/* Vibrant Yellow Pill Buttons */
+.btn-yellow-pill {
+  background-color: #ffd000;
+  color: #000000;
+  font-weight: 700;
+  border-radius: 9999px;
+  box-shadow: 0 4px 15px rgba(255, 208, 0, 0.3);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-yellow-pill:hover {
+  background-color: #f2c400;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 208, 0, 0.45);
+}
+
+/* Futuristic Light Grid and Dot Patterns */
+.bg-dot-matrix {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.15) 1.5px, transparent 1.5px);
+  background-size: 16px 16px;
+}
+
+/* Entrance animations (used by modals and the mobile menu) */
+@keyframes ff-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes ff-pop-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes ff-slide-down {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ff-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes ff-pop-out {
+  from { opacity: 1; transform: scale(1); }
+  to { opacity: 0; transform: scale(0.97); }
+}
+
+@keyframes ff-slide-up {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-8px); }
+}
+
+@keyframes ff-rise-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
+.animate-fadeIn { animation: ff-fade-in 0.2s ease-out both; }
+.animate-popIn { animation: ff-pop-in 0.2s ease-out both; }
+.animate-slideDown { animation: ff-slide-down 0.2s ease-out both; }
+.animate-fadeOut { animation: ff-fade-out 0.16s ease-in both; }
+.animate-popOut { animation: ff-pop-out 0.16s ease-in both; }
+.animate-slideUp { animation: ff-slide-up 0.16s ease-in both; }
+/* Backwards fill only: nothing is left applied afterwards */
+.animate-riseIn { animation: ff-rise-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) backwards; }
+
+/* Height-animated open/close (Collapse component) */
+.collapse {
+  display: grid;
+  grid-template-rows: 0fr;
+  visibility: hidden;
+  transition: grid-template-rows 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s linear 0.3s;
+}
+
+.collapse.is-open {
+  grid-template-rows: 1fr;
+  visibility: visible;
+  transition: grid-template-rows 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s;
+}
+
+.collapse-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* Images fade in once loaded (FadeImage component) */
+img[data-fade]:not([data-loaded]) { opacity: 0; }
+img[data-fade][data-loaded] { animation: ff-fade-in 0.5s ease-out backwards; }
+
+@keyframes ff-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes ff-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.animate-marquee { animation: ff-marquee 30s linear infinite; }
+.animate-blink { animation: ff-blink 1s steps(1) infinite; }
+.marquee-pause:hover .animate-marquee { animation-play-state: paused; }
+
+/* Scroll reveal. Resets to `transform: none` (not translateY(0)) so a revealed
+   section never becomes a containing block for fixed-position modals inside it. */
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Neo-brutalist card: hard border + offset shadow, shifts toward the shadow on hover */
+.card-brutal {
+  border: 2px solid #0c0c0e;
+  box-shadow: 6px 6px 0 #0c0c0e;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-brutal:hover {
+  transform: translate(3px, 3px);
+  box-shadow: 3px 3px 0 #0c0c0e;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fadeIn,
+  .animate-popIn,
+  .animate-slideDown,
+  .animate-fadeOut,
+  .animate-popOut,
+  .animate-slideUp,
+  .animate-riseIn,
+  .animate-marquee,
+  .animate-blink,
+  .animate-ping,
+  .animate-pulse {
+    animation: none;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .card-brutal,
+  .card-brutal:hover {
+    transition: none;
+  }
+
+  .collapse,
+  .collapse.is-open {
+    transition: none;
+  }
+
+  img[data-fade][data-loaded] {
+    animation: none;
+  }
+}
+
+/* Sleek Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d4d4dc;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1aa;
+}
