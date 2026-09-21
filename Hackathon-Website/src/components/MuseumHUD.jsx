@@ -6,7 +6,7 @@ import scrollToSection from '../utils/scrollToSection';
 
 const FLOORS = [
   { id: 'hero', name: 'HOME', label: '00 / HOME' },
-  { id: 'challenges', name: 'CHALLENGES', label: '01 / CHALLENGES' },
+  { id: 'challenges', name: 'DOMAINS', label: '01 / DOMAINS' },
   { id: 'about', name: 'ABOUT', label: '02 / ABOUT' },
   { id: 'timeline', name: 'TIMELINE', label: '03 / TIMELINE' },
   { id: 'rules', name: 'RULES', label: '04 / RULES & FAQ' },

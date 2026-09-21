@@ -42,7 +42,7 @@ export default function Hero() {
           {/* Organiser lockup, as on the poster: School, Department, PRESENTS */}
           <div className="mb-7">
             <p className="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-[0.18em] text-zinc-600 mb-2">
-              School of Engineering · VELS University (VISTAS)
+              School of Engineering · VELS INSTITUTE OF SCIENCE,TECHNOLOGY & ADVANCED STUDIES (VISTAS)
             </p>
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
               <p className="inline-block bg-[#ffd000] border-2 border-zinc-950 shadow-[3px_3px_0_#0c0c0e] px-3 py-1.5 sm:py-2 font-heading text-base sm:text-lg lg:text-base xl:text-xl font-extrabold uppercase tracking-tight leading-tight text-zinc-950">

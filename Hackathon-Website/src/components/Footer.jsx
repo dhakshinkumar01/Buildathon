@@ -90,7 +90,7 @@ export default function Footer() {
               NAVIGATION
             </span>
             <ul className="space-y-2 uppercase">
-              <li><a href="#challenges" className="hover:text-zinc-950 transition-colors">CHALLENGES</a></li>
+              <li><a href="#challenges" className="hover:text-zinc-950 transition-colors">DOMAINS</a></li>
               <li><a href="#about" className="hover:text-zinc-950 transition-colors">ABOUT</a></li>
               <li><a href="#timeline" className="hover:text-zinc-950 transition-colors">TIMELINE</a></li>
               <li><a href="#rules" className="hover:text-zinc-950 transition-colors">RULES &amp; FAQ</a></li>

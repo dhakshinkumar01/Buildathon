@@ -10,7 +10,7 @@ import scrollToSection from '../utils/scrollToSection';
 // Keep in page order: the active-section highlight relies on it.
 const NAV_LINKS = [
   { id: 'hero', label: 'Home' },
-  { id: 'challenges', label: 'Challenges' },
+  { id: 'challenges', label: 'Domains' },
   { id: 'about', label: 'About' },
   { id: 'timeline', label: 'Timeline' },
   { id: 'rules', label: 'Rules' },
