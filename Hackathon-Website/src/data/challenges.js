@@ -31,7 +31,7 @@ export const CHALLENGES = [
       },
       {
         code: 'AG03',
-        title: 'The Agent That Survives a Poisoned Tool (HARD)',
+        title: 'The Agent That Survives a Poisoned Tool',
         desc: 'In multiagent and tool using systems, a single compromised tool, web page, or email can hijack the whole workflow, as shown by EchoLeak (CVE-2025-32711), a zero click prompt injection exploit in which a single crafted email, with no user interaction, could cause an enterprise AI assistant to access internal files and exfiltrate their contents to an attacker controlled server. Filtering suspicious phrases does not solve this, because injected instructions can be reworded endlessly. Build a defensive orchestrator based on information flow control rather than keyword detection: the plan of tool calls is produced from the user’s request alone, every value returned by a tool carries a provenance label that survives transformations such as extraction and concatenation, and sensitive tools (sending email, transferring money, reading internal files) enforce a policy on where their arguments are allowed to come from. A tool that suddenly asks for data unrelated to the task must be blocked and raise an alert rather than be obeyed. Demonstrate on at least five legitimate multitool tasks and at least five attacks, including one that reaches a sensitive tool through a reworded or multihop path, using a scripted or LLM driven agent with mocked tools, and report attack success rate and task completion rate against an undefended baseline. Judges evaluate containment under reworded and multihop attacks, how much legitimate work still completes (overblocking is penalized), and the clarity of the trust model.',
         skills: ['Information flow/taint tracking', 'multiagent orchestration', 'LLM security', 'policy design', 'threat modeling']
       },
@@ -63,7 +63,7 @@ export const CHALLENGES = [
       },
       {
         code: 'SC02',
-        title: 'Evacuate Without Gridlock (HARD)',
+        title: 'Evacuate Without Gridlock',
         desc: 'When a flood, wildfire, or chemical leak forces an evacuation, sending everyone down the shortest route at once turns roads into parking lots, and the last people out are the ones who needed the most time. Build an evacuation planner that, given a road network with segment capacities and travel times, populations at origin zones, and shelters with limited capacity, computes a plan (which share of each zone leaves when and by which route) that minimizes the time until the last person is safe. The planner must reason about time and congestion (for example with a time expanded flow model or an equivalent method), respect shelter capacities, and support staged departures. It must replan mid evacuation when a road segment becomes blocked, starting from where everyone currently is rather than from scratch. Demonstrate on a synthetic city graph of at least a few dozen nodes, running every plan through the same simple queue based traffic simulator, and report total clearance time and average evacuation time against an everyone leaves now shortest path baseline, including at least one mid evacuation road closure. Judges evaluate plan optimality and feasibility (no segment or shelter over capacity), the quality of the congestion model, and the replanning behavior, not visual polish.',
         skills: ['Network flow/time expanded graphs', 'optimization (LP/min cost flow)', 'traffic simulation', 'replanning', 'graph algorithms']
       },
@@ -101,7 +101,7 @@ export const CHALLENGES = [
       },
       {
         code: 'ED03',
-        title: 'The Autograder That Fixes and Explains (HARD)',
+        title: 'The Autograder That Fixes and Explains',
         desc: 'Grading programming assignments by running hidden tests tells a student they failed but not why or how close they were, and manual feedback does not scale. Build an autograder (single function Python problems are fine) that, given a student’s buggy program, generates targeted test cases that expose the fault, localizes it to a specific line or expression, searches for the smallest change that makes the program pass (program repair), and produces layered feedback (from a hint about the failing block up to the corrected line) without simply handing over the full solution. The system must handle submissions that do not parse or that crash or loop forever, resist reward hacking (a student hardcoding expected outputs should be caught), and grade against a reference behavior rather than exact text match. Demonstrate on at least three problems with at least five buggy submissions each (write them yourselves, covering off by one errors, wrong operators, and missed edge cases), reporting fault localization accuracy and repair success rate, and show it catches at least one gaming attempt. Judges evaluate repair and localization correctness, feedback quality and leveling, and robustness to gaming.',
         skills: ['Program analysis/automated repair', 'test generation', 'compilers/parsing', 'feedback design']
       },
@@ -139,7 +139,7 @@ export const CHALLENGES = [
       },
       {
         code: 'FT03',
-        title: 'One Charge, No Matter How Many Times the Network Lies (HARD)',
+        title: 'One Charge, No Matter How Many Times the Network Lies',
         desc: 'In real payment systems, networks drop, clients retry, queues redeliver, and webhooks arrive twice, yet the customer must be charged exactly once and the ledger must always balance. Build a payment processing engine that guarantees exactly once effect on an append only, double entry ledger (an embedded database such as SQLite is fine) under duplicate, out of order, and adversarially replayed events, using client supplied idempotency keys (including rejecting a reused key that arrives with a different amount) and a reconciliation process that detects and repairs mismatches against a mocked external processor’s records. The engine must survive a crash between “processor succeeded” and “ledger written” without losing or duplicating money. Demonstrate with a chaos test that injects duplicates, reordering, and a mid write crash, then verifies with automated invariant checks that the ledger is correct afterward: every transaction’s entries sum to zero, each idempotency key has exactly one effect, and ledger totals match the processor’s records. Judges evaluate correctness under adversarial event streams, crash recovery, and reconciliation; money must never be created or destroyed.',
         skills: ['Distributed systems', 'idempotency/exactly once semantics', 'transactional/ledger design', 'fault injection', 'reconciliation']
       },
@@ -177,7 +177,7 @@ export const CHALLENGES = [
       },
       {
         code: 'AT03',
-        title: 'Deliver Before It Spoils (HARD)',
+        title: 'Deliver Before It Spoils',
         desc: 'Delivering perishable produce is not just the shortest route: every extra hour in a warm truck destroys value, and a route that is short in distance can be terrible for freshness. Build a routing engine for perishable goods that plans multistop delivery routes minimizing total spoilage and value loss (a function of time and temperature per item) subject to vehicle capacity and delivery time windows, and reoptimizes the remaining stops when a vehicle breaks down or a road closes mid route. The engine must handle the tradeoff where a longer distance route preserves more value, and an independent checker must verify that every route respects all hard constraints. Demonstrate on instances of 25 to 50 customers (for example Solomon VRPTW instances or a synthetic generator) augmented with perishability, using an off the shelf routing solver or your own heuristic, and report value preserved and constraint compliance versus a distance only routing baseline, including a mid route disruption. Judges evaluate the spoilage aware objective, constraint satisfaction, and dynamic reoptimization.',
         skills: ['Vehicle routing/combinatorial optimization', 'metaheuristics', 'constraint handling', 'simulation', 'OR modeling']
       },
