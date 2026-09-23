@@ -3,7 +3,8 @@ import {
   ArrowDown,
   Calendar,
   MapPin,
-  Trophy
+  Trophy,
+  Bell
 } from 'lucide-react';
 import heroAiHuman from '../assets/hero-ai-human.webp';
 import { REGISTER_URL, VENUE_MAP_URL } from '../constants';
@@ -42,7 +43,7 @@ export default function Hero() {
           {/* Organiser lockup, as on the poster: School, Department, PRESENTS */}
           <div className="mb-7">
             <p className="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-[0.18em] text-zinc-600 mb-2">
-              School of Engineering · VELS INSTITUTE OF SCIENCE,TECHNOLOGY & ADVANCED STUDIES (VISTAS)
+              School of Engineering · VELS University (VISTAS)
             </p>
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
               <p className="inline-block bg-[#ffd000] border-2 border-zinc-950 shadow-[3px_3px_0_#0c0c0e] px-3 py-1.5 sm:py-2 font-heading text-base sm:text-lg lg:text-base xl:text-xl font-extrabold uppercase tracking-tight leading-tight text-zinc-950">
@@ -180,6 +181,19 @@ export default function Hero() {
           </div>
         </div>
 
+      </div>
+
+      {/* Acceptance Notification Card */}
+      <div className="mt-12 sm:mt-16 max-w-3xl mx-auto">
+        <div className="bg-white border-2 border-zinc-950 rounded-2xl p-4 sm:p-5 shadow-[4px_4px_0_#ffd000] flex flex-col sm:flex-row items-start sm:items-center gap-3.5 sm:gap-4">
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#ffd000] border-2 border-zinc-950 flex items-center justify-center shrink-0 shadow-[2px_2px_0_#0c0c0e]">
+            <Bell className="w-4 h-4 sm:w-5 sm:h-5 text-zinc-950" />
+          </div>
+          <p className="text-sm sm:text-base text-zinc-800 leading-relaxed font-sans">
+            <strong className="font-extrabold text-zinc-950 mr-1.5">Acceptance Notification:</strong>
+            <span className="font-normal text-zinc-700">The acceptance notification will be sent to the team leader’s registered email address within 24 hours of submission.</span>
+          </p>
+        </div>
       </div>
 
     </section>

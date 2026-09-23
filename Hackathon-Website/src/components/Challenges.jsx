@@ -99,7 +99,7 @@ export default function Challenges() {
 
       <div className="mb-10">
         <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold text-zinc-950 uppercase tracking-tight mb-4">
-          CHALLENGE DOMAINS
+          DOMAIN
         </h2>
         <p className="text-base sm:text-lg text-zinc-500 max-w-2xl">
           {CHALLENGES.length} domains, {TOTAL_PROBLEMS} problem statements. Open a domain to read the full statements
