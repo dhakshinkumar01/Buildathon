@@ -4,7 +4,8 @@ import {
   Calendar,
   MapPin,
   Trophy,
-  Bell
+  Bell,
+  Users
 } from 'lucide-react';
 import heroAiHuman from '../assets/hero-ai-human.webp';
 import { REGISTER_URL, VENUE_MAP_URL } from '../constants';
@@ -183,16 +184,34 @@ export default function Hero() {
 
       </div>
 
-      {/* Acceptance Notification Card */}
-      <div className="mt-12 sm:mt-16 max-w-3xl mx-auto">
-        <div className="bg-white border-2 border-zinc-950 rounded-2xl p-4 sm:p-5 shadow-[4px_4px_0_#ffd000] flex flex-col sm:flex-row items-start sm:items-center gap-3.5 sm:gap-4">
-          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#ffd000] border-2 border-zinc-950 flex items-center justify-center shrink-0 shadow-[2px_2px_0_#0c0c0e]">
-            <Bell className="w-4 h-4 sm:w-5 sm:h-5 text-zinc-950" />
+      {/* Information Cards (Side by Side on Desktop) */}
+      <div className="mt-12 sm:mt-16 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 items-stretch">
+          {/* Left Card: Acceptance Notification */}
+          <div className="bg-white border-2 border-zinc-950 rounded-2xl p-4 sm:p-5 shadow-[4px_4px_0_#ffd000] flex items-start gap-3.5 sm:gap-4 h-full">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#ffd000] border-2 border-zinc-950 flex items-center justify-center shrink-0 shadow-[2px_2px_0_#0c0c0e]">
+              <Bell className="w-4 h-4 sm:w-5 sm:h-5 text-zinc-950" />
+            </div>
+            <div className="flex-1">
+              <p className="text-sm sm:text-base text-zinc-800 leading-relaxed font-sans">
+                <strong className="font-extrabold text-zinc-950 mr-1.5">Acceptance Notification:</strong>
+                <span className="font-normal text-zinc-700">The acceptance notification will be sent to the team leader’s registered email address within 48 hours of submission.</span>
+              </p>
+            </div>
           </div>
-          <p className="text-sm sm:text-base text-zinc-800 leading-relaxed font-sans">
-            <strong className="font-extrabold text-zinc-950 mr-1.5">Acceptance Notification:</strong>
-            <span className="font-normal text-zinc-700">The acceptance notification will be sent to the team leader’s registered email address within 24 hours of submission.</span>
-          </p>
+
+          {/* Right Card: Who Can Participate */}
+          <div className="bg-white border-2 border-zinc-950 rounded-2xl p-4 sm:p-5 shadow-[4px_4px_0_#ffd000] flex items-start gap-3.5 sm:gap-4 h-full">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#ffd000] border-2 border-zinc-950 flex items-center justify-center shrink-0 shadow-[2px_2px_0_#0c0c0e]">
+              <Users className="w-4 h-4 sm:w-5 sm:h-5 text-zinc-950" />
+            </div>
+            <div className="flex-1">
+              <p className="text-sm sm:text-base text-zinc-800 leading-relaxed font-sans">
+                <strong className="font-extrabold text-zinc-950 mr-1.5">WHO CAN PARTICIPATE:</strong>
+                <span className="font-normal text-zinc-700">BUILDATHON – Future Forge is open to undergraduate students from every engineering, science, and computing branch — including but not limited to CSE.</span>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
