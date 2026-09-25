@@ -165,7 +165,7 @@ export default function Challenges() {
                   <span>OPEN DOMAIN</span>
                   <span className="inline-flex items-center gap-2">
                     <span className="px-2.5 py-0.5 rounded-md bg-[#ffd000] border border-zinc-950 text-[10px]">
-                      {item.problemStatements.length} PROBLEMS
+                      {item.hasTracks ? `${item.tracks.length} TRACKS` : `${item.problemStatements.length} PROBLEMS`}
                     </span>
                     <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </span>

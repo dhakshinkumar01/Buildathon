@@ -25,6 +25,13 @@ const slugOf = (domain) => domain.short.toLowerCase().replace(/\s+/g, '-');
 // Terminal-styled popup for one challenge domain: overview, key areas and
 // collapsible problem statements, with prev/next domain navigation.
 export default function ChallengeModal({ domain, domains, expandCode, closing = false, onNavigate, onClose }) {
+  const [selectedTrack, setSelectedTrack] = useState(() => {
+    if (expandCode) {
+      if (expandCode.startsWith('IOT')) return 'iot';
+      if (expandCode.startsWith('EMB')) return 'embedded';
+    }
+    return null;
+  });
   const [expanded, setExpanded] = useState(() => new Set(expandCode ? [expandCode] : []));
   const [copied, setCopied] = useState(null);
 
@@ -35,6 +42,7 @@ export default function ChallengeModal({ domain, domains, expandCode, closing = 
   if (stateKey !== lastStateKey) {
     setLastStateKey(stateKey);
     setExpanded(new Set(expandCode ? [expandCode] : []));
+    setSelectedTrack(expandCode ? (expandCode.startsWith('IOT') ? 'iot' : expandCode.startsWith('EMB') ? 'embedded' : null) : null);
   }
   const dialogRef = useRef(null);
   const bodyRef = useRef(null);
@@ -43,7 +51,9 @@ export default function ChallengeModal({ domain, domains, expandCode, closing = 
   const index = domains.findIndex((d) => d.id === domain.id);
   const prev = domains[(index - 1 + domains.length) % domains.length];
   const next = domains[(index + 1) % domains.length];
-  const statements = domain.problemStatements;
+
+  const activeTrackObj = domain.hasTracks && selectedTrack ? domain.tracks.find((t) => t.id === selectedTrack) : null;
+  const statements = activeTrackObj ? activeTrackObj.problemStatements : domain.problemStatements;
   const allOpen = expanded.size === statements.length;
 
   // Lock page scroll, move focus into the dialog, and restore both on close.
@@ -177,9 +187,107 @@ export default function ChallengeModal({ domain, domains, expandCode, closing = 
 
         {/* Scrollable body */}
         <div ref={bodyRef} className="flex-1 overflow-y-auto overscroll-contain p-5 sm:p-8 space-y-8 text-zinc-900">
+          {domain.hasTracks && selectedTrack === null ? (
+            /* Track Selection View for Combined Domain */
+            <div className="space-y-8 py-2">
+              <div className="text-center max-w-xl mx-auto">
+                <span className="inline-block px-3 py-1 rounded-full bg-[#ffd000] border-2 border-zinc-950 font-mono text-[11px] font-extrabold uppercase tracking-wider text-zinc-950 mb-3 shadow-[2px_2px_0_#0c0c0e]">
+                  {`// domain_${domain.id} · COMBINED DOMAIN`}
+                </span>
+                <h2
+                  id="challenge-modal-title"
+                  className="font-heading text-3xl sm:text-4xl font-extrabold uppercase tracking-tight text-zinc-950"
+                >
+                  IOT &amp; EMBEDDED SYSTEMS
+                </h2>
+                <p className="mt-2 text-sm sm:text-base text-zinc-600 font-sans font-medium">
+                  Choose a track to explore problem statements
+                </p>
+              </div>
 
-          {/* Header */}
-          <div className="flex flex-col sm:flex-row gap-5 sm:items-center">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto items-stretch">
+                {domain.tracks.map((track, trackIdx) => (
+                  <div
+                    key={track.id}
+                    className="bg-white border-2 border-zinc-950 rounded-2xl p-5 sm:p-6 shadow-[6px_6px_0_#ffd000] hover:shadow-[8px_8px_0_#0c0c0e] hover:-translate-y-1 transition-all flex flex-col justify-between group"
+                  >
+                    <div>
+                      {/* Visual Graphic inside track option card */}
+                      <div className="w-full aspect-[16/9] mb-5 rounded-xl border-2 border-zinc-950 bg-zinc-950 p-4 relative overflow-hidden flex items-center justify-center">
+                        <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#ffd000_1px,transparent_1px)] [background-size:12px_12px]" />
+                        {track.id === 'iot' ? (
+                          <div className="relative z-10 text-center flex flex-col items-center gap-2">
+                            <div className="w-12 h-12 rounded-xl bg-[#ffd000] border-2 border-zinc-950 flex items-center justify-center text-zinc-950 shadow-[3px_3px_0_#ffffff]">
+                              <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.14 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" />
+                              </svg>
+                            </div>
+                            <span className="font-mono text-[10px] font-bold text-[#ffd000] tracking-widest uppercase">
+                              SENSORS • GATEWAYS • CLOUD
+                            </span>
+                          </div>
+                        ) : (
+                          <div className="relative z-10 text-center flex flex-col items-center gap-2">
+                            <div className="w-12 h-12 rounded-xl bg-[#ffd000] border-2 border-zinc-950 flex items-center justify-center text-zinc-950 shadow-[3px_3px_0_#ffffff]">
+                              <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M3 9h2m-2 6h2m14-6h2m-2 6h2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                              </svg>
+                            </div>
+                            <span className="font-mono text-[10px] font-bold text-[#ffd000] tracking-widest uppercase">
+                              MCU • FIRMWARE • REAL-TIME
+                            </span>
+                          </div>
+                        )}
+                      </div>
+
+                      <span className="font-mono text-[10px] font-bold tracking-wider px-2.5 py-1 rounded-md bg-zinc-100 border border-zinc-300 text-zinc-700 uppercase block w-fit mb-3">
+                        OPTION {trackIdx + 1}
+                      </span>
+
+                      <h3 className="font-heading text-xl sm:text-2xl font-extrabold text-zinc-950 uppercase tracking-tight mb-2">
+                        {track.title}
+                      </h3>
+
+                      <p className="text-sm text-zinc-600 leading-relaxed font-sans mb-6">
+                        {track.desc}
+                      </p>
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() => setSelectedTrack(track.id)}
+                      className="w-full inline-flex items-center justify-between bg-zinc-950 group-hover:bg-[#ffd000] text-white group-hover:text-zinc-950 border-2 border-zinc-950 font-mono text-xs sm:text-sm font-extrabold uppercase px-5 py-3 rounded-xl transition-colors cursor-pointer shadow-[3px_3px_0_#0c0c0e]"
+                    >
+                      <span>{track.buttonText}</span>
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <>
+              {domain.hasTracks && activeTrackObj && (
+                <div className="flex items-center justify-between bg-zinc-100 border-2 border-zinc-950 rounded-2xl p-4 shadow-[4px_4px_0_#0c0c0e]">
+                  <div className="flex items-center gap-2">
+                    <span className="font-mono text-xs font-bold text-zinc-600">SELECTED TRACK:</span>
+                    <span className="px-3 py-1 rounded-lg bg-[#ffd000] border-2 border-zinc-950 font-mono text-xs font-extrabold text-zinc-950">
+                      {activeTrackObj.title}
+                    </span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setSelectedTrack(null)}
+                    className="inline-flex items-center gap-1 font-mono text-xs font-bold text-zinc-950 hover:text-amber-600 underline cursor-pointer"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                    <span>CHANGE TRACK</span>
+                  </button>
+                </div>
+              )}
+
+              {/* Header */}
+              <div className="flex flex-col sm:flex-row gap-5 sm:items-center">
             <div className="w-full sm:w-56 aspect-[333/211] rounded-2xl overflow-hidden border-2 border-zinc-950 shadow-[4px_4px_0_#0c0c0e] shrink-0 bg-zinc-100">
               <img src={domain.image} alt="" className="w-full h-full object-cover" />
             </div>
@@ -346,6 +454,8 @@ export default function ChallengeModal({ domain, domains, expandCode, closing = 
               })}
             </div>
           </div>
+          </>
+          )}
         </div>
 
         {/* Footer: domain navigation + register */}

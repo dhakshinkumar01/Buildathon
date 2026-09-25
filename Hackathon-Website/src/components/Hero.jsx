@@ -160,7 +160,7 @@ export default function Hero() {
               10 hours
             </span>
             <span aria-hidden="true" className="absolute top-1/3 -right-2 sm:-right-3 z-10 rotate-3 bg-white border-2 border-zinc-950 shadow-[3px_3px_0_#0c0c0e] px-3 py-1.5 font-mono text-xs font-extrabold uppercase tracking-wider text-zinc-950">
-              5 domains
+              6 domains
             </span>
             <span aria-hidden="true" className="absolute -bottom-3 -left-1 sm:-left-2 z-10 rotate-2 bg-zinc-950 border-2 border-zinc-950 shadow-[3px_3px_0_#ffd000] px-3 py-1.5 font-mono text-xs font-extrabold tracking-wider text-[#ffd000]">
               ₹25,000
