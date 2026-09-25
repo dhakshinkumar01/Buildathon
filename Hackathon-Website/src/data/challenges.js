@@ -195,85 +195,23 @@ export const CHALLENGES = [
     name: 'IoT & Embedded Systems',
     short: 'IOT & EMBEDDED',
     title: 'DOMAIN 6 - IOT & EMBEDDED SYSTEMS',
-    desc: 'Build connected and intelligent hardware solutions using sensors, microcontrollers, smart devices, and real-time systems.',
+    desc: 'Build intelligent real-world solutions using IoT, sensors, microcontrollers, connected devices, actuators, edge processing, and embedded technologies.',
     image: domainIotEmbedded,
-    tag: 'IOT • EMBEDDED • SENSORS • CONNECTED DEVICES',
-    about: 'Build connected and intelligent hardware solutions combining IoT edge devices, sensors, microcontrollers, real-time control, and cloud integration.',
-    realWorld: 'Hardware systems face real-world constraints such as low latency requirements, signal noise, power limits, edge compute boundaries, and reliable wireless connectivity.',
-    whatToBuild: 'Create practical IoT & Embedded solutions using sensors, microcontrollers, actuators, and connected cloud platforms.',
-    hasTracks: true,
-    tracks: [
-      {
-        id: 'iot',
-        code: 'IOT',
-        title: 'IOT & CONNECTED SYSTEMS',
-        desc: 'Build connected solutions using sensors, smart devices, cloud platforms, and real-time data to solve real-world problems.',
-        buttonText: 'EXPLORE IOT →',
-        problemStatements: [
-          {
-            code: 'IOT01',
-            title: 'Smart Industrial IoT & Asset Monitoring',
-            desc: 'Build an IoT monitoring solution that ingests telemetry from remote sensors, detects anomalies in real-time, alerts operators of critical threshold breaches, and securely transmits telemetry data to a cloud or local gateway.',
-            skills: ['IoT Gateways', 'MQTT/HTTP', 'Sensor Integration', 'Real-time Telemetry', 'Cloud/Edge Integration']
-          },
-          {
-            code: 'IOTOPEN',
-            title: 'Open Problem Statement (IoT)',
-            desc: 'Propose your own IoT & Connected Systems problem statement. Build a working prototype using sensors, microcontrollers, gateways, and cloud/edge communication.',
-            skills: ['Problem Scoping', 'IoT Architecture', 'Sensors & Wireless Protocols', 'Prototyping']
-          }
-        ]
-      },
-      {
-        id: 'embedded',
-        code: 'EMB',
-        title: 'EMBEDDED SYSTEMS',
-        desc: 'Design and build practical embedded solutions using microcontrollers, sensors, actuators, and real-time systems to solve real-world problems.',
-        buttonText: 'EXPLORE EMBEDDED →',
-        problemStatements: [
-          {
-            code: 'EMB01',
-            title: 'Real-Time Sensor Fusion & Edge Control',
-            desc: 'Design a low-latency embedded system using a microcontroller (e.g., ESP32, STM32, Arduino) that processes multi-sensor data locally, executes real-time control logic, and operates reliably under strict power or resource constraints.',
-            skills: ['Microcontrollers (ESP32/STM32/Arduino)', 'Embedded C/C++/Rust', 'Sensor Interfacing (I2C/SPI/UART)', 'Real-time Control']
-          },
-          {
-            code: 'EMBOPEN',
-            title: 'Open Problem Statement (Embedded Systems)',
-            desc: 'Propose your own Embedded Systems problem statement focusing on firmware, hardware-software co-design, actuators, sensors, and real-time embedded control.',
-            skills: ['Firmware Development', 'Hardware Co-design', 'Embedded Logic', 'Prototyping']
-          }
-        ]
-      }
-    ],
+    tag: 'IOT • EMBEDDED • SENSORS • CONNECTED SYSTEMS',
+    about: 'Build intelligent real-world solutions combining IoT, sensors, microcontrollers, connected devices, actuators, edge processing, and embedded technologies.',
+    realWorld: 'Hardware systems face real-world constraints such as low latency execution, signal noise, power limits, edge compute boundaries, component choice, and reliable communication.',
+    whatToBuild: 'Build intelligent real-world solutions using IoT, sensors, microcontrollers, connected devices, actuators, edge processing, and embedded technologies.',
+    hardwareNotice: {
+      title: 'BRING YOUR OWN HARDWARE',
+      desc: 'Hardware kits and components will not be provided. Participants must bring their own required microcontrollers, sensors, boards, modules, actuators, components, and other hardware.'
+    },
+    badgeText: 'OPEN PROBLEM',
     problemStatements: [
       {
-        code: 'IOT01',
-        track: 'IoT & Connected Systems',
-        title: 'Smart Industrial IoT & Asset Monitoring',
-        desc: 'Build an IoT monitoring solution that ingests telemetry from remote sensors, detects anomalies in real-time, alerts operators of critical threshold breaches, and securely transmits telemetry data to a cloud or local gateway.',
-        skills: ['IoT Gateways', 'MQTT/HTTP', 'Sensor Integration', 'Real-time Telemetry', 'Cloud/Edge Integration']
-      },
-      {
-        code: 'IOTOPEN',
-        track: 'IoT & Connected Systems',
-        title: 'Open Problem Statement (IoT)',
-        desc: 'Propose your own IoT & Connected Systems problem statement. Build a working prototype using sensors, microcontrollers, gateways, and cloud/edge communication.',
-        skills: ['Problem Scoping', 'IoT Architecture', 'Sensors & Wireless Protocols', 'Prototyping']
-      },
-      {
-        code: 'EMB01',
-        track: 'Embedded Systems',
-        title: 'Real-Time Sensor Fusion & Edge Control',
-        desc: 'Design a low-latency embedded system using a microcontroller (e.g., ESP32, STM32, Arduino) that processes multi-sensor data locally, executes real-time control logic, and operates reliably under strict power or resource constraints.',
-        skills: ['Microcontrollers (ESP32/STM32/Arduino)', 'Embedded C/C++/Rust', 'Sensor Interfacing (I2C/SPI/UART)', 'Real-time Control']
-      },
-      {
-        code: 'EMBOPEN',
-        track: 'Embedded Systems',
-        title: 'Open Problem Statement (Embedded Systems)',
-        desc: 'Propose your own Embedded Systems problem statement focusing on firmware, hardware-software co-design, actuators, sensors, and real-time embedded control.',
-        skills: ['Firmware Development', 'Hardware Co-design', 'Embedded Logic', 'Prototyping']
+        code: 'OPEN PROBLEM STATEMENT',
+        title: 'Open Problem Statement',
+        desc: 'Participants are free to identify and define their own real-world problem statement using IoT and Embedded Systems technologies.',
+        skills: ['Microcontrollers', 'IoT & Edge Computing', 'Sensors & Actuators', 'Embedded Systems', 'Hardware Prototyping']
       }
     ]
   }
