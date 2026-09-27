@@ -17,13 +17,13 @@ const HIGHLIGHTS = [
   {
     id: '03',
     title: 'CONNECT',
-    desc: 'Team up with 2–3 teammates and build together for the whole day.',
+    desc: 'Team up with 3–4 teammates and build together for the whole day.',
     icon: Users
   },
   {
     id: '04',
     title: 'INNOVATE',
-    desc: 'Pick one of 26 real-world problem statements across six domains and build a working prototype.',
+    desc: 'Pick one of 20 real-world problem statements across six domains and build a working prototype.',
     icon: Lightbulb
   }
 ];
